@@ -1,0 +1,10 @@
+{% load i18n thumbnail thumbnail_utils %}
+
+{% spaceless %}
+{% if picture.url %}<a class="picture-link" href="{{ picture.url }}">{% endif %}
+{% thumbnail picture.image picture.size|default:"100x100" upscale=True format="PNG" as pic %}
+<img src="{{pic.url}}" style="margin-top:{{ picture.size|height:pic.height }}px" {% if picture.alt %}alt="{{ picture.alt }}" {% endif %}/>
+{% endthumbnail %}
+{% if picture.url %}</a>{% endif %}
+{% endspaceless %}
+  
